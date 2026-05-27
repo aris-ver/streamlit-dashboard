@@ -10,7 +10,10 @@ VIEW = "dms2-428216.analytics.regional_quarterly_enriched"
 
 @st.cache_data
 def load_data():
-    client = bigquery.Client.from_service_account_json(KEY_PATH)
+    credentials_info = dict(st.secrets["gcp_service_account"])
+    from google.oauth2 import service_account
+    credentials = service_account.Credentials.from_service_account_info(credentials_info)
+    client = bigquery.Client(credentials=credentials, project=PROJECT)
     query = f"SELECT * FROM `{VIEW}`"
     return client.query(query).to_dataframe()
 
