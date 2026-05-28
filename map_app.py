@@ -13,7 +13,7 @@ st.set_page_config(page_title="Attica Tourism Map", layout="wide")
 KEY_PATH = r"C:\Users\arisg\OneDrive\Desktop\DM2key.json"
 PROJECT  = "dms2-428216"
 TABLE    = "dms2-428216.elstat.arrivals_overnights_occupancy"
-SHP_DIR  = r"C:\Users\arisg\Downloads\attiki_shp"
+SHP_DIR  = "shapefiles"
 
 NAME_OVERRIDES = {
     "Ηλιούπολης":                "ΗΛΙΟΥΠΟΛΕΩΣ",
