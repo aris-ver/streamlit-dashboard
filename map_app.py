@@ -262,7 +262,8 @@ with map_col:
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         font_color="white",
-        coloraxis_colorbar=dict(title=colorbar_title, tickfont=dict(color="white"), titlefont=dict(color="white")),
+        coloraxis_colorbar=dict(title=dict(text=colorbar_title, font=dict(color="white")), tickfont=dict(color="white")),
+
     )
     st.plotly_chart(fig_map, use_container_width=True)
 
