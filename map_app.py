@@ -146,7 +146,11 @@ def build_geojson(shp_dir, all_data_names):
 @st.cache_data
 def load_data():
     from google.cloud import bigquery
-    client = bigquery.Client.from_service_account_json(KEY_PATH)
+    from google.oauth2 import service_account
+    credentials = service_account.Credentials.from_service_account_info(
+        dict(st.secrets["gcp_service_account"])
+    )
+    client = bigquery.Client(credentials=credentials, project=PROJECT)
     return client.query(f"SELECT * FROM `{TABLE}`").to_dataframe()
 
 # ── APP ───────────────────────────────────────────────────────────────────────
